@@ -103,7 +103,55 @@
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
           
          //image load in canvas 2//
-          drawImageIOSFix(context2,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
+          function detectVerticalSquash2(img) {
+  var iw2 = img.naturalWidth, ih2 = img.naturalHeight;
+  var canvas2 = document.createElement('canvas2');
+  canvas2.width = 1;
+  canvas2.height = ih2;
+  var ctx2 = canvas2.getContext('2d');
+  ctx2.drawImage(img, 0, 0);
+  var data2 = ctx2.getImageData(0, 0, 1, ih).data;
+  var sy2 = 0;
+  var ey2 = ih2;
+  var py2 = ih2;
+  while (py2 > sy2) {
+   var alpha2 = data2[(py2 - 1) * 4 + 3];
+   if (alpha2 === 0) {
+    ey2 = py2;
+   } 
+   else {
+    sy2 = py2;
+   }
+   py2 = (ey2 + sy2) >> 1;
+  }
+  var ratio = (py2 / ih2);
+  return (ratio===0)?1:ratio;
+ }
+
+ function drawImageIOSFix2(ctx2, img2, sx2, sy2, sw2, sh2, dx2, dy2, dw2, dh2) {
+  var vertSquashRatio = detectVerticalSquash(img);
+  ctx.drawImage(img2, sx2, sy2, sw2, sh2, dx2, dy2, dw2, dh2 / vertSquashRatio);
+ }
+
+/* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
+ window.onload = function() {
+  var fileInput2 = document.getElementById('fileInput');
+  var messageDisplayArea2 = document.getElementById('messageDisplayArea');
+  /* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
+  fileInput.addEventListener('change', function(e) {
+    var fil2e = fileInput2.files[0];
+    var imageType2 = /image.*/;
+    /* if (file.type.match(imageType)) checks that the selected file is indeed an image. */
+    if (file.type.match(imageType)) {
+      /* new FileReader(); and reader.onload start some kind of file reading process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
+      var reader2 = new FileReader();
+      reader.onload = function(e) {
+        /* messageDisplayArea.innerHTML not needed but allows you to send a message at this point in the program. */
+        messageDisplayArea.innerHTML = "You picked an image!";
+        /* new Image() and img.onload start some kind of new image creation process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
+        var img2 = new Image();
+        img.onload = function() {
+          drawImageIOSFix2(context2,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
           
           
         } // end of img.onload
