@@ -105,7 +105,6 @@
           drawImageIOSFix(context2, window.img, 0, 0, window.img.naturalWidth, window.img.naturalHeight, 0, 0, 600, 500)
          
          //blue filter on 2nd picture//
-function bluefult3r () {
 var grayscale = function() {
 	context2.drawImage(window.img, 0, 0);
 	const imageData = context2.getImageData(0, 0, canvas2.width, canvas2.height);
@@ -171,7 +170,8 @@ var grayscale = function() {
       
      </script>
      
-     <button type="button" onclick = "bluefilt3r()" > Blue Filter </button>
+     <input type="radio" id="grayscale" name="color" value="grayscale">
+  		<label for="grayscale">Grayscale</label>
 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
