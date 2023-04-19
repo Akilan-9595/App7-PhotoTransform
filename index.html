@@ -104,7 +104,8 @@
          //draws image on second canvas//
           drawImageIOSFix(context2,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500)
          
-       const grayscale = () => {
+         //blue filter on 2nd picture//
+         const grayscale = () => {
        context2.drawImage(img, 0, 0);
        const imageData = context2.getImageData(0, 0, canvas.width, canvas.height);
        const data = imageData.data;
@@ -167,6 +168,8 @@
       
       
      </script>
+     
+     <button type="button" onclick = grayscale(); > Blue Filter </button>
 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
