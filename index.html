@@ -143,7 +143,16 @@
         context.fillText("Original image will go here", 10, 20);
       </script>
      
-     <canvas id="2canvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
+     <canvas id="canvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
+     <script> //second canvas script//
+        var canvas2 = document.getElementById('canvas2');
+        var context2 = canvas2.getContext("2d")
+        context2.font = '20pt Calibri';
+        context2.fillStyle = "black";
+        context2.fillText("Second Image will go here", 10, 20);
+      
+      
+     </script>
 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
