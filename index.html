@@ -105,6 +105,7 @@
           drawImageIOSFix(context2,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500)
          
          //blue filter on 2nd picture//
+         function bluefilt3r() {
          const grayscale = () => {
        context2.drawImage(img, 0, 0);
        const imageData = context2.getImageData(0, 0, canvas.width, canvas.height);
@@ -114,9 +115,10 @@
       data[i] = avg; // red
       data[i + 1] = avg; // green
       data[i + 2] = avg; // blue
-  }
+     }
   context2.putImageData(imageData, 0, 0);
-};
+    }
+ }       
           
           
           
@@ -169,7 +171,7 @@
       
      </script>
      
-     <button type="button" onclick = grayscale(); > Blue Filter </button>
+     <button type="button" onclick = "bluefilt3r()" > Blue Filter </button>
 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
