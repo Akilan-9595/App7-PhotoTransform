@@ -104,7 +104,8 @@
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
          
-               var data = img.data;
+               var imgD = context.getImageData(0, 0, canvas.width, canvas.height);
+               var data = imgD.data;
          
            for (var i = 0; i < data.length; i += 4) {
       var red = data[i]; // red
