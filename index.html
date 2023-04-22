@@ -104,15 +104,16 @@
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
          
-         
-        var imageData = context.getImageData (0, 0, 600, 500);
+        //bluefilter code//
+        var imageData = context.getImageData (0, 0, 600, 500); //copies the canvas parameters//
+                        //function for tansforming the image with blue filter//
                         for (var i = 0; i < imageData.data.length; i += 4) {
-                                 var b = imageData.data[i + 2]; 
-                                 imageData.data[i] = 0; 
-                                 imageData.data[i + 1] = 0; 
-                                 imageData.data[i + 2] = b;
+                                 var b = imageData.data[i + 2]; //sets the color blue equal to itself//
+                                 imageData.data[i] = 0; //no red
+                                 imageData.data[i + 1] = 0; //no green
+                                 imageData.data[i + 2] = b; //blue
                         }
-         context2.putImageData(imageData, 0, 0);
+         context2.putImageData(imageData, 0, 0); //this puts the image back onto the canvas with the bluefilter//
           
           
           
@@ -147,20 +148,20 @@
       
       <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
-        var canvas = document.getElementById('myCanvas');
+        var canvas = document.getElementById('myCanvas'); 
         var context = canvas.getContext("2d");
-        context.font = '20pt Calibri';
-        context.fillStyle = "black";
-        context.fillText("Original image will go here", 10, 20);
+        context.font = '20pt Calibri'; //text font//
+        context.fillStyle = "black"; //text color//
+        context.fillText("Original image will go here", 10, 20); //tells user where original phot goes//
       </script>
      
      <canvas id="canvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
      <script> //second canvas script//
-        var canvas2 = document.getElementById('canvas2');
+        var canvas2 = document.getElementById('canvas2'); 
         var context2 = canvas2.getContext("2d")
-        context2.font = '20pt Calibri';
-        context2.fillStyle = "black";
-        context2.fillText("Second Image will go here", 10, 20);
+        context2.font = '20pt Calibri'; //text font//
+        context2.fillStyle = "black"; //text color//
+        context2.fillText("Filtered Image will go here", 10, 20); //tells user where filtered photo goes//
       
       
      </script>
